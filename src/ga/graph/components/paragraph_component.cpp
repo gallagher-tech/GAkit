@@ -7,6 +7,7 @@ namespace ga {
 Paragraph::Paragraph()
     : m_offset( 0 )
     , m_size( -1 )
+	, m_textColor( 1 )
     , m_hAlignment( HorzAlignment::LEFT )
     , m_vAlignment( VertAlignment::TOP )
     , m_leading( -1 )
