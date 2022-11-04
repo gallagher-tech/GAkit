@@ -48,8 +48,8 @@ using FontCache = ResourceCache<Font>;
 
 inline FontCache& fontCache()
 {
-	static FontCache texCache;
-	return texCache;
+	static FontCache fontCache;
+	return fontCache;
 }
 
 // ---------------------------
@@ -82,7 +82,7 @@ struct FontStyle
 			m_name = ss.str();
 		}
 
-		if ( !fontCache().load( name, settings ) ) {
+		if ( !fontCache().load( m_name, settings ) ) {
 			m_name = "";
 		}
 #endif
