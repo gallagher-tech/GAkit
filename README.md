@@ -1,6 +1,6 @@
-# ga::kit
+# GA::kit
 
-`ga::kit` is G&A's in-house C++ application framework for building interactive experiences.  
+`GA::kit` is G&A's in-house C++ application framework for building interactive experiences.  
 We use it to create anything from 2D UI prototypes to high-performance 3D immersive installations.
 
 We designed it from scratch to be:
@@ -13,14 +13,14 @@ We designed it from scratch to be:
 
 - _familiar_ -  
   As creative coders, we love the clarity and efficacy of existing toolkits like openFrameworks and Cinder.  
-  That's why we designed `ga::kit` to work as an oF addon - and a Cinder Block is on the roadmap.  
+  That's why we designed `GA::kit` to work as an oF addon - and a Cinder Block is on the roadmap.  
   Or bring your own rendering engine - we strive to be framework agnostic.
 
 ## How To Use
 
-### ofxGANative openFrameworks addon
+### ofxGAkit openFrameworks addon
 
-Currently, the simplest way to use `ga::kit` is as an openFrameworks addon. _Todo: ofxGANative repo link_
+Currently, the simplest way to use `GA::kit` is through [ofxGAkit](https://github.com/gallagher-tech/ofxGAkit) openFrameworks addon.  
 
 Simply `git clone` the addon repo inside of your `openFrameworks/addons/` directory, then use the oF Project Generator to generate a project with the addon selected.
 
@@ -28,7 +28,7 @@ In this case, openFrameworks provides the windowing and rendering system (`glfw 
 
 ### Bring Your Own Backend
 
-We aim to make `ga::kit` "framework agnostic". This means that we would like it to play nicely with other C++ creative coding frameworks like Cinder - or it could be used on its own by including a few supporting libraries.
+We aim to make `GA::kit` "framework agnostic". This means that we would like it to play nicely with other C++ creative coding frameworks like Cinder - or it could be used on its own by including a few supporting libraries.
 
 The only requirements beyond C++11 are including the `glm` and `nlohmann::json` libraries, and adding an openGL windowing library, like `glfw`.
 
