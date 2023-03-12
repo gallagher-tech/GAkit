@@ -157,7 +157,7 @@ protected:
 		}
 	}
 
-	StyledText Paragraph::parseMarkdownStyles( const std::string& text );
+	StyledText parseMarkdownStyles( const std::string& text );
 
 	std::string m_text;       // raw text, could contain **bold** and *italics*
 	StyledText m_styledText;  // styled text, parsed for **bold** and *italics*
