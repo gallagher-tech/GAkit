@@ -25,13 +25,13 @@ inline std::vector<std::string> splitString( const std::string& str, char delim 
 
 inline std::string toLower( std::string str )
 {
-	std::transform( str.begin(), str.end(), str.begin(), []( unsigned char c ) { return std::tolower( c, std::locale() ); } );
+	std::transform( str.begin(), str.end(), str.begin(), []( char c ) { return std::tolower( c, std::locale() ); } );
 	return str;
 }
 
 inline std::string toUpper( std::string str )
 {
-	std::transform( str.begin(), str.end(), str.begin(), []( unsigned char c ) { return std::toupper( c, std::locale() ); } );
+	std::transform( str.begin(), str.end(), str.begin(), []( char c ) { return std::toupper( c, std::locale() ); } );
 
 	return str;
 }
