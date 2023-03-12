@@ -6,7 +6,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "Timer.h"
+#include "ga/timer.h"
 
 namespace ga {
 
