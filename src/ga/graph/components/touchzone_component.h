@@ -182,7 +182,7 @@ public:
 	}
 
 	// signals
-	ga::Signal<TouchZone::Event> onTouchEvent;
+	ga::Signal<TouchZone::Event&> onTouchEvent;
 
 protected:
 	virtual void setScene( std::shared_ptr<Scene> scene )
