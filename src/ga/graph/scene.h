@@ -41,7 +41,7 @@ public:
 	bool hasNode( std::shared_ptr<Node> node );
 
 	std::shared_ptr<Node> getRootNode();
-	std::vector<std::shared_ptr<Node>> Scene::getNodes();
+	std::vector<std::shared_ptr<Node>> getNodes();
 	void forEachNode( std::function<void( std::shared_ptr<Node> )> fn );
 
 	void setName( const std::string& name );
