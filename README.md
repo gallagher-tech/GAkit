@@ -26,7 +26,7 @@ Currently, the simplest way to use `GA::kit` is through [ofxGAkit](https://githu
 
 Simply `git clone --recursive` the addon repo inside of your `openFrameworks/addons/` directory, then use the oF Project Generator to generate a project with the addon selected.
 
-Full setup instructions can be found [here](https://github.com/gallagher-tech/ofxGAkit).
+The addon works for both Windows and Mac. Full setup instructions can be found [here](https://github.com/gallagher-tech/ofxGAkit).
 
 In this case, openFrameworks provides the windowing and rendering system (`glfw / openGL`), and automatically includes the necessary `nlohmann::json` and `glm` libraries.
 
@@ -34,7 +34,7 @@ In this case, openFrameworks provides the windowing and rendering system (`glfw 
 
 We aim to make `GA::kit` "framework agnostic". This means that we would like it to play nicely with other C++ creative coding frameworks like Cinder - or it could be used on its own by including a few supporting libraries.
 
-The only requirements beyond C++11 are including the `glm` and `nlohmann::json` libraries, and adding an openGL windowing library, like `glfw`.
+The only requirements beyond C++14 are including the `glm` and `nlohmann::json` libraries, and adding an openGL windowing library, like `glfw`.
 
 We could use your help:
 
@@ -64,7 +64,7 @@ We could use your help:
 
 ## Requirements  
 
-- C++11
+- C++14
 - OpenGL 3+
 - [**glm**](https://github.com/g-truc/glm)
 - [**nlohmann::json**](https://github.com/nlohmann/json)
