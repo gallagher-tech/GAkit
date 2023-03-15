@@ -73,6 +73,7 @@ public:
 
 			case ga::TouchEvent::Type::DRAG: {
 				if ( isInBounds ) {
+					touchEvt.captured = true;
 					if ( getState() == State::ACTIVE ) {
 						// dragged within bounds
 						event.type = TouchZone::Event::Type::DRAG_INSIDE;
@@ -97,6 +98,7 @@ public:
 			case ga::TouchEvent::Type::RELEASE: {
 				if ( getState() == State::ACTIVE ) {
 					// tap release
+					touchEvt.captured = true;
 					setState( State::INACTIVE );
 					event.type = TouchZone::Event::Type::RELEASE;
 					onTouchEvent( event );
@@ -108,6 +110,7 @@ public:
 
 			case ga::TouchEvent::Type::CANCEL: {
 				// not sure how to handle this...
+				touchEvt.captured = true;
 				setState( State::INACTIVE );
 				break;
 			}
