@@ -58,12 +58,11 @@ public:
 		if ( m_boundsInverted )
 			isInBounds = !isInBounds;  // e.g. for click-off
 
+		
 		switch ( touchEvt.type ) {
 			case TouchEvent::Type::PRESS: {
 				if ( isInBounds ) {
-					if ( m_isCapturingTouch ) {
-						touchEvt.captured = true;
-					}
+					touchEvt.captured = true;
 					// tap on
 					setState( State::ACTIVE );
 					event.type = TouchZone::Event::Type::PRESS;
@@ -74,12 +73,10 @@ public:
 
 			case ga::TouchEvent::Type::DRAG: {
 				if ( isInBounds ) {
-					if ( m_isCapturingTouch ) {
-						touchEvt.captured = true;
-					}
 					if ( getState() == State::ACTIVE ) {
 						// dragged within bounds
 						event.type = TouchZone::Event::Type::DRAG_INSIDE;
+						std::cout << "dragged inside" << std::endl;
 					} else {
 						// drag into zone
 						// setState( State::ACTIVE );
@@ -100,9 +97,6 @@ public:
 			case ga::TouchEvent::Type::RELEASE: {
 				if ( getState() == State::ACTIVE ) {
 					// tap release
-					if ( m_isCapturingTouch ) {
-						touchEvt.captured = true;
-					}
 					setState( State::INACTIVE );
 					event.type = TouchZone::Event::Type::RELEASE;
 					onTouchEvent( event );
@@ -114,9 +108,6 @@ public:
 
 			case ga::TouchEvent::Type::CANCEL: {
 				// not sure how to handle this...
-				if ( m_isCapturingTouch ) {
-					touchEvt.captured = true;
-				}
 				setState( State::INACTIVE );
 				break;
 			}
@@ -144,19 +135,12 @@ public:
 		m_state = State::DISABLED;
 	}
 
-	inline void setAllowLosingFocus( bool isAllowed = true )
-	{
+	inline void setAllowLosingFocus( bool isAllowed = true ) {
 		m_allowLosingFocus = isAllowed;
 	}
 
-	inline void setEnableCapturingTouch( bool isEnabled = true )
-	{
+	inline void setEnableCapturingTouch(bool isEnabled = true) {
 		m_isCapturingTouch = isEnabled;
-	}
-
-	inline bool getIsCapturingTouch()
-	{
-		return m_isCapturingTouch;
 	}
 
 	inline void invertBounds( bool invert = true )
@@ -189,7 +173,7 @@ public:
 	{
 		if ( !scene )
 			return;
-		m_touchConnection = scene->onTouchEvent.connect_scoped( [this]( TouchEvent& te ) { handleTouchEvent( te ); }, groupId );
+		m_touchConnection = scene->onTouchEvent.connect_scoped( [this]( TouchEvent& te ) { handleTouchEvent( te ); }, groupId );		
 	}
 
 	void disconnectTouch()
@@ -198,7 +182,7 @@ public:
 	}
 
 	// signals
-	ga::Signal<TouchZone::Event&> onTouchEvent;
+	ga::Signal<TouchZone::Event> onTouchEvent;
 
 protected:
 	virtual void setScene( std::shared_ptr<Scene> scene )
@@ -210,8 +194,8 @@ protected:
 	State m_state;
 	ga::Connection m_touchConnection;
 	bool m_boundsInverted                                      = false;
-	bool m_isCapturingTouch                                    = true;
-	bool m_allowLosingFocus                                    = false;
+	bool m_isCapturingTouch									   = true;
+	bool m_allowLosingFocus									   = false;
 	std::function<bool( TouchZone::Event )> m_customBoundsTest = nullptr;
 };
 }  // namespace ga

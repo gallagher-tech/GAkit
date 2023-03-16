@@ -106,49 +106,7 @@ inline vec3 calcScaleToFit( const vec3& sourceSize, const vec3& containerSize, c
 
 inline vec2 calcScaleToFit( const vec2& sourceSize, const vec2& containerSize, const FitMode& fitMode )
 {
-	vec2 scale = vec2( 1.f );
-
-	// calculate sizing based on fit mode
-	switch ( fitMode ) {
-
-		case FitMode::FIT: {
-			vec2 s   = containerSize / sourceSize;
-			float s0 = std::min( s.x, s.y );
-			scale    = vec2( s0 );
-			break;
-		}
-
-		case FitMode::STRETCH: {
-			scale = containerSize / sourceSize;
-			break;
-		}
-
-		case FitMode::COVER: {
-			vec2 s   = containerSize / sourceSize;
-			float s1 = std::max( s.x, s.y );
-			scale    = vec2( s1 );
-			break;
-		}
-
-		case FitMode::FIT_WIDTH: {
-			float sx = containerSize.x / sourceSize.x;
-			scale    = vec2( sx );
-			break;
-		}
-
-		case FitMode::FIT_HEIGHT: {
-			float sy = containerSize.y / sourceSize.y;
-			scale    = vec2( sy );
-			break;
-		}
-
-		case FitMode::FIT_DEPTH:
-		case FitMode::NONE:
-		default:
-			break;
-	}
-
-	return scale;
+	return calcScaleToFit( vec3( sourceSize, 1.f ), vec3( containerSize, 1.f ), fitMode );
 }
 
 }  // namespace ga
