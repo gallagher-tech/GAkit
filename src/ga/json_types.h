@@ -80,7 +80,7 @@ inline void from_json( const ga::Json& j, ga::mat4& m )
 		// glm is column major - convert from row major
 		for ( int r = 0; r < 4; ++r ) {
 			for ( int c = 0; c < 4; ++c ) {
-				_m[c][r] = j[r][c];
+				_m[c][r] = j.at(r).at(c);
 			}
 		}
 	} catch ( std::exception& e ) {

@@ -14,10 +14,10 @@ namespace json {
 		try {
 			if ( keyOrPointer.empty() || keyOrPointer.at( 0 ) == '/' ) {
 				// allow for json pointer paths - these are either empty or begin with '/'
-				ret = json[ga::Json::json_pointer( keyOrPointer )].get<T>();
+				ret = json.at(ga::Json::json_pointer( keyOrPointer )).get<T>();
 			} else {
 				// assume key is a normal key for a json object
-				ret = json[keyOrPointer].get<T>();
+				ret = json.at(keyOrPointer).get<T>();
 			}
 		} catch ( ... ) {
 			// todo: log warning? accept an ostream& for logging?
