@@ -1,5 +1,5 @@
 #pragma once
-#include "json.hpp"  // nlohmann::json
+#include <nlohmann/json.hpp>
 
 namespace ga {
 using Json = nlohmann::json;
